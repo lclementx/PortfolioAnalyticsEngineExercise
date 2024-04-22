@@ -18,7 +18,6 @@ import java.util.concurrent.locks.LockSupport;
 import java.util.stream.Collectors;
 
 public class Application {
-
     private static String defaultCSVPath = "/Users/clemmie/Documents/JAVA/PortfolioAnalyticsEngineExercise/sample.csv";
     private static String dbUrl = "jdbc:sqlite:/Users/clemmie/Documents/JAVA/PortfolioAnalyticsEngineExercise/db/asset.db";
     public static void main(String[] args) {
