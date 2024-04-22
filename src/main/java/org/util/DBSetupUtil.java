@@ -5,7 +5,7 @@ import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DBUtil {
+public class DBSetupUtil {
     public static void main(String[] args) throws ClassNotFoundException {
         Class.forName("org.sqlite.JDBC");
         String dbPath = "/Users/clemmie/Documents/JAVA/PortfolioAnalyticsEngineExercise/db/";
