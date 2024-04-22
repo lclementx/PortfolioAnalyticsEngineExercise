@@ -1,2 +1,2 @@
-rootProject.name = "CryptoQuantAnalysisExercise"
+rootProject.name = "PortfolioAnalyticsEngineExercise"
 
