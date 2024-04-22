@@ -42,5 +42,6 @@ public class PrintUtils {
         }
         System.out.printf(divider + "\n");
         System.out.printf("Total Portfolio Value: %f \n" , totalPortfolioValue);
+        System.out.println();
     }
 }

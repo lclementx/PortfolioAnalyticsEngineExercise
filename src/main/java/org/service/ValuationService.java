@@ -92,12 +92,10 @@ public class ValuationService implements ISubscriber<List<Price>>{
         if(secPriceHistory.size() < 3) {
             volatility = 0.0;
         } else {
-            System.out.println("Price History Size: " + secPriceHistory.size());
             List<Double> priceBySecondBuckets = PriceUtils.getPriceByTime(secPriceHistory);
             List<Double> returnsBySecondBuckets = PriceUtils.getPricePercentageDiff(priceBySecondBuckets);
             Stats priceStats = Stats.of(returnsBySecondBuckets);
             volatility = Math.sqrt(priceStats.sampleVariance() * 21_772_800.0);
-            System.out.printf("Volatility : %f \n", volatility);
         }
         Price underlierPrice = priceMap.getOrDefault(underlier,secPriceHistory.get(secPriceHistory.size() - 1));
         LocalDateTime priceTime = underlierPrice.getTime();
