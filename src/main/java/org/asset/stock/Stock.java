@@ -1,18 +1,12 @@
 package org.asset.stock;
 
-import org.asset.Asset;
-import org.asset.AssetType;
 import org.asset.Security;
+import org.asset.SecurityType;
 
-public class Stock extends Asset {
+public class Stock extends Security {
 
-    public Stock(Security security) {
-        super(security, AssetType.STOCK);
-    }
-
-    public Stock(Security security, double qty) {
-        super(security, AssetType.STOCK);
-        this.setQuantity(qty);
+    public Stock(String ticker) {
+        super(ticker, SecurityType.STOCK);
     }
 
 }

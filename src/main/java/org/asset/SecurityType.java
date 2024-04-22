@@ -1,5 +1,5 @@
 package org.asset;
 
-public enum AssetType {
+public enum SecurityType {
     STOCK, OPTION
 }

@@ -1,21 +1,16 @@
 package org.asset.option;
 
 import org.asset.Asset;
-import org.asset.AssetType;
+import org.asset.SecurityType;
 import org.asset.Security;
 
-public class Option extends Asset {
+public class Option extends Security {
 
     private OptionProperties optionProperties;
 
-    public Option(Security security, OptionProperties optionProperties) {
-        super(security, AssetType.OPTION);
+    public Option(String ticker, OptionProperties optionProperties) {
+        super(ticker, SecurityType.OPTION);
         this.optionProperties = optionProperties;
-    }
-
-    public Option(Security security, OptionProperties optionProperties, double qty) {
-        this(security,optionProperties);
-        this.setQuantity(qty);
     }
 
     public OptionProperties getOptionProperties() {

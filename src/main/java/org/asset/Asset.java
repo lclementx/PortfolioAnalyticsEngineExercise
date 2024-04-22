@@ -2,17 +2,19 @@ package org.asset;
 
 import java.util.Objects;
 
-public abstract class Asset{
+public class Asset{
 
     private Security security;
 
     private double quantity;
 
-    private final AssetType assetType;
-
-    public Asset(Security security, AssetType assetType) {
+    public Asset(Security security) {
         this.security = security;
-        this.assetType = assetType;
+    }
+
+    public Asset(Security security, double qty) {
+        this.security = security;
+        this.quantity = qty;
     }
 
     public double getQuantity() {
@@ -29,11 +31,6 @@ public abstract class Asset{
 
     public void addQuantity(double delta) {
         this.quantity += delta;
-    }
-
-
-    public AssetType getAssetType() {
-        return assetType;
     }
 
     @Override

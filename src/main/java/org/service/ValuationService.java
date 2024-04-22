@@ -41,13 +41,13 @@ public class ValuationService implements ISubscriber<List<Price>>{
         for(Asset asset: portfolio.getAssetList()) {
             double assetPrice = Double.NEGATIVE_INFINITY;
             Security assetSecurity = asset.getSecurity();
-            AssetType assetType = asset.getAssetType();
+            SecurityType assetType = assetSecurity.getSecurityType();
             switch(assetType) {
                 case STOCK:
                     assetPrice = getStockPrice(assetSecurity, priceMap);
                     break;
                 case OPTION:
-                    assetPrice = getOptionPrice(asset, priceMap);
+                    assetPrice = getOptionPrice(assetSecurity, priceMap);
             }
             valueMap.put(assetSecurity, new Valuation(asset,new Price(assetSecurity,assetPrice)));
         }
@@ -84,9 +84,9 @@ public class ValuationService implements ISubscriber<List<Price>>{
         return previousPrice;
     }
 
-    private double getOptionPrice(Asset asset, Map<Security,Price> priceMap) {
+    private double getOptionPrice(Security security, Map<Security,Price> priceMap) {
         double volatility;
-        Option option = (Option) asset;
+        Option option = (Option) security;
         Security underlier = option.getOptionProperties().getUnderlier();
         List<Price> secPriceHistory = priceHistory.get(underlier);
         if(secPriceHistory.size() < 3) {
@@ -99,7 +99,7 @@ public class ValuationService implements ISubscriber<List<Price>>{
         }
         Price underlierPrice = priceMap.getOrDefault(underlier,secPriceHistory.get(secPriceHistory.size() - 1));
         LocalDateTime priceTime = underlierPrice.getTime();
-        return OptionPriceCalculator.getPrice((Option) asset,underlierPrice.getPrice(), volatility, priceTime, riskFreeRate);
+        return OptionPriceCalculator.getPrice((Option) security,underlierPrice.getPrice(), volatility, priceTime, riskFreeRate);
     }
 
 }

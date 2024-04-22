@@ -15,8 +15,8 @@ class MockMarketDataProviderTest {
 
     @Test
     void testPriceGeneration() throws InterruptedException {
-        Stock stockA = new Stock(new Security("GOOGL", "GOOGLE"));
-        MockMarketDataProvider mockMarketDataProvider = new MockMarketDataProvider(Collections.singletonList(stockA.getSecurity()));
+        Stock stockA = new Stock("GOOGL");
+        MockMarketDataProvider mockMarketDataProvider = new MockMarketDataProvider(Collections.singletonList(stockA));
         PrintSubscriber printSubscriber = new PrintSubscriber();
         mockMarketDataProvider.subscribe(Collections.singletonList(printSubscriber));
         ScheduledExecutorService executors = Executors.newScheduledThreadPool(1);

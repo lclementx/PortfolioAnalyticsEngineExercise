@@ -2,30 +2,22 @@ package org.asset;
 
 import java.util.Objects;
 
-public class Security {
+public abstract class Security {
     private String ticker;
-    private String description;
 
-    public Security(String ticker, String description) {
+    private SecurityType securityType;
+
+    public Security(String ticker, SecurityType securityType) {
         this.ticker = ticker;
-        this.description = description;
+        this.securityType = securityType;
     }
     public String getTicker() {
         return ticker;
     }
 
-    public void setTicker(String ticker) {
-        this.ticker = ticker;
+    public SecurityType getSecurityType() {
+        return securityType;
     }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

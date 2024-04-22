@@ -31,15 +31,14 @@ class ValuationServiceTest {
 
     @Test
     void testValuationService() throws InterruptedException {
-        Security security = new Security("AAPL","AAPL");
-        Security optionSecurity = new Security("AAPL-DEC-2024-123-C","AAPL-DEC-2024-123-C");
-        OptionProperties optionProperties = new OptionProperties(security, OptionTypeEnum.CALL, 123, LocalDate.of(2024,12,31));
+        Stock stock = new Stock("AAPL");
+        OptionProperties optionProperties = new OptionProperties(stock, OptionTypeEnum.CALL, 123, LocalDate.of(2024,12,31));
         List<Asset> assets = Arrays.asList(
-                new Option(optionSecurity,optionProperties,1000),
-                new Stock(security, 50)
+                new Asset(new Option("AAPL-DEC-2024-123-C",optionProperties),100),
+                new Asset(new Stock("AAPL"), 50)
         );
         Portfolio portfolio = new Portfolio(assets);
-        MockMarketDataProvider testPriceProvider = new MockMarketDataProvider(Collections.singletonList(security));
+        MockMarketDataProvider testPriceProvider = new MockMarketDataProvider(Collections.singletonList(stock));
         ValuationService vs = new ValuationService(portfolio, testPriceProvider);
         ScheduledExecutorService es = Executors.newSingleThreadScheduledExecutor();
         es.scheduleAtFixedRate(() -> {

@@ -2,6 +2,7 @@ package org;
 
 import org.asset.Asset;
 import org.asset.Security;
+import org.asset.SecurityType;
 import org.asset.stock.Stock;
 import org.portfolio.Portfolio;
 import org.service.MockMarketDataProvider;
@@ -15,9 +16,8 @@ public class Application {
     public static void main(String[] args) {
         //Get the list of assets from a DB
         List<Asset> assets = Arrays.asList(
-                new Stock(new Security("GOOGL","GOOGL"),100),
-                new Stock(new Security("AAPL","AAPL"),200),
-                new Stock(new Security("NVDA","NVDA"),320)
+                new Asset(new Stock("GOOGL")),
+                new Asset(new Stock("NVDA"))
         );
 
         Portfolio portfolio = new Portfolio(assets);
