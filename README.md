@@ -5,11 +5,36 @@ The following code to creates a simple engine that mimics live prices streamed f
 Supported assets: **Stocks**, **European Options**
 
 Domain Structure:
-- **Security**: Ticker + Description
-- **Asset**: Security + Quantity --> Can have different implementations of an Asset.
+- **Security**: Ticker (Abstract class, can have different implementations of a Security).
+- **Asset**: Security + Quantity 
 - **Price**: Security + Value + Time
 - **Portfolio**: Collection of Assets
 - **Valuation Service**: Valuates a Portfolio, given a Price Publisher
+
+Database Tables:
+**Security**
+| ticker    | securityType |
+| -------- | ------- |
+| AAPL  | 1   |
+| AAPL-DEC-2024-123-C |   2   |
+
+**SecurityType**
+| value    | name |
+| -------- | ------- |
+|  1 | STOCK   |
+|  2 |   OPTION   |
+
+**Option**
+| ticker    | underlier | strikePrice | maturityDate | optionType | 
+| -------- | ------- | -------- | ------- | ------- |
+|  AAPL-DEC-2024-123-C | AAPL  | 123 | 2024-12-31 | CALL |
+
+
+Flow:
+1. Creates a portfolio by reading assets from CSV and querying db for security information
+2. Initialize MockMarketDataProvider
+3. Create ValuationService for given portfolio and register ValuationService as a subscriber to MockMarketDataService
+4. As MockMarketDataProvder publishes updates, ValuationService revaluates portfolio and prints results.
 
 Key Features:
 - MockMarketDataProvider: Attempts to generate prices for a given list of securities provied using Discrete-time Geometric Brownian Motion
