@@ -1,5 +1,11 @@
 #### Portfolio Analytics Engine ####
 
+JDK 1.8
+
+External Dependencies:
+- "com.google.guava:guava:33.0.0-jre"
+- "org.xerial:sqlite-jdbc:3.45.3.0"
+
 The following code to creates a simple engine that mimics live prices streamed from a datasource and valuate a portfolio.
 
 Supported assets: **Stocks**, **European Options**
