@@ -16,7 +16,7 @@ Database Tables:
 | ticker    | securityType |
 | -------- | ------- |
 | AAPL  | 1   |
-| AAPL-DEC-2024-123-C |   2   |
+| AAPL-DEC-2024-110-C |   2   |
 
 **SecurityType**
 | value    | name |
@@ -27,7 +27,7 @@ Database Tables:
 **Option**
 | ticker    | underlier | strikePrice | maturityDate | optionType | 
 | -------- | ------- | -------- | ------- | ------- |
-|  AAPL-DEC-2024-123-C | AAPL  | 123 | 2024-12-31 | CALL |
+|  AAPL-DEC-2024-123-C | AAPL  | 110 | 2024-12-31 | CALL |
 
 
 Flow:
